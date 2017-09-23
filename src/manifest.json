@@ -15,9 +15,11 @@
         "*://keep.google.com/*"
       ],
       "css": [
-        "content-scripts/inject.css"
+        "content-scripts/inject.css",
+        "lib/highlight.min.css"
       ],
       "js": [
+        "lib/highlight.min.js",
         "lib/markdown-it.min.js",
         "content-scripts/inject.js"
       ]

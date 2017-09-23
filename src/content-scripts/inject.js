@@ -5,7 +5,17 @@
     function render() {
         document.querySelector('.notes-container').removeEventListener('DOMSubtreeModified', render, false);
 
-        var converter = window.markdownit();
+        var converter = window.markdownit({
+             highlight: function (str, lang) {
+                if (lang && window.hljs.getLanguage(lang)) {
+                  try {
+                    return window.hljs.highlight(lang, str).value;
+                  } catch (__) {}
+                }
+
+                return ''; // use external default escaping
+              }
+        });
         var contentEditables = document.querySelectorAll('div[contenteditable="false"].h1U9Be-YPqjbf');
 
         for (var i = 0; i < contentEditables.length; i++) {
